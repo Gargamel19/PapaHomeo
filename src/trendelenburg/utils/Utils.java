@@ -8,6 +8,7 @@ import java.util.Properties;
 public class Utils {
 
     public static String dataFile = "";
+    public static String trennmittel = "";
     public static boolean guimode = true;
 
     public static void readPropertys() {
@@ -19,6 +20,8 @@ public class Utils {
             prop.load(input);
 
             // get the property value and print it out
+            trennmittel = prop.getProperty("trennmittel");
+            System.out.println("trennmittel: " + trennmittel);
             dataFile = prop.getProperty("data");
             System.out.println("dataFile: " + dataFile);
             guimode = Boolean.parseBoolean(prop.getProperty("guimode"));

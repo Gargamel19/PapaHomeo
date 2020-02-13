@@ -53,6 +53,7 @@ public class Window extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setSize(550, 390);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         Utils.readPropertys();
         karten = Data.readFromFileAsList(Utils.dataFile);

@@ -1,5 +1,7 @@
 package trendelenburg.data;
 
+import trendelenburg.utils.Utils;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +22,7 @@ public class Data {
 
             bufferedReader.lines().forEach(line -> {
                 if(line.length()>1){
-                    String[] parts = line.split(",");
+                    String[] parts = line.split(Utils.trennmittel);
                     if(hash.get().containsKey(parts[0])){
                         hash.set(new HashMap<>());
                         System.out.println("");
@@ -58,7 +60,7 @@ public class Data {
 
             bufferedReader.lines().forEach(line -> {
                 if(line.length()>1){
-                    String[] parts = line.split(",");
+                    String[] parts = line.split(Utils.trennmittel);
                     if(karten.get().contains(new Karte(parts[0], ""))){
                         karten.set(new ArrayList<>());
                         System.out.println("");
