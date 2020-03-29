@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+
+
 public class Utils {
 
     public static String dataFile = "";
     public static String trennmittel = "";
-    public static boolean guimode = true;
+    public static String passwort = "";
+    public static Mode mode = null;
 
     public static void readPropertys() {
         try (InputStream input = new FileInputStream("data.properties")) {
@@ -24,13 +27,17 @@ public class Utils {
             System.out.println("trennmittel: " + trennmittel);
             dataFile = prop.getProperty("data");
             System.out.println("dataFile: " + dataFile);
-            guimode = Boolean.parseBoolean(prop.getProperty("guimode"));
-            System.out.println("guimode: " + guimode);
+            mode = Mode.valueOf(prop.getProperty("mode"));
+            System.out.println("guimode: " + mode.name());
+            passwort = prop.getProperty("passwort");
+            System.out.println("passwort: " + passwort);
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
 
     }
+
+
 
 }

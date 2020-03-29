@@ -1,13 +1,16 @@
 package trendelenburg.data;
 
+import com.google.gson.JsonObject;
+
 import java.util.Objects;
 
 public class Karte {
-
+    int id;
     String frage = "";
     String antwort = "";
 
-    public Karte(String frage, String antwort) {
+    public Karte(int i, String frage, String antwort) {
+        this.id = i;
         this.frage = frage;
         this.antwort = antwort;
     }
@@ -28,6 +31,14 @@ public class Karte {
         this.antwort = antwort;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,5 +50,13 @@ public class Karte {
     @Override
     public int hashCode() {
         return Objects.hash(frage);
+    }
+
+    public JsonObject toJson(){
+        JsonObject jo = new JsonObject();
+        jo.addProperty("id", id);
+        jo.addProperty("frage", frage);
+        jo.addProperty("antwort", antwort);
+        return jo;
     }
 }

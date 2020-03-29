@@ -1,5 +1,7 @@
+import REST.Application;
 import trendelenburg.UI.Window;
 import trendelenburg.data.Data;
+import trendelenburg.utils.Mode;
 import trendelenburg.utils.Utils;
 
 import java.util.HashMap;
@@ -8,18 +10,18 @@ import java.util.Scanner;
 
 public class CommandLineListener {
 
-    static HashMap<String, String> data;
+    public static HashMap<String, String> data;
 
 
     public static void main(String[] args) {
 
         Utils.readPropertys();
 
-        if (Utils.guimode){
+        if (Utils.mode == Mode.GUI){
 
-            Window window = new Window();
+            new Window();
 
-        }else {
+        }else if (Utils.mode == Mode.CONSOLE) {
 
             if (null!=(data = Data.readFromFileAsHash(Utils.dataFile))) {
 
@@ -46,6 +48,9 @@ public class CommandLineListener {
             }
 
 
+        }else if(Utils.mode == Mode.API){
+            Application app = new Application();
+            app.main(new String[0]);
         }
 
     }
