@@ -73,6 +73,9 @@ public class Data {
                     }
                     karten.get().add(new Karte(i.get(), parts[0], parts[1]));
                     i.getAndIncrement();
+                    if(i.get()>Utils.id){
+                        Utils.id = i.get();
+                    }
                     System.out.print(".");
 
                 }
@@ -82,6 +85,8 @@ public class Data {
             }
             System.out.println("");
             System.out.println("inported " + " data");
+            Utils.saveID();
+            System.out.println("next id: " + (Utils.id+1));
             return karten.get();
         } catch (FileNotFoundException e) {
             System.out.println("Datei \"" + fileName + "\" konnte nicht gefunden werden");

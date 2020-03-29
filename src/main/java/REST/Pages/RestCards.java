@@ -66,19 +66,8 @@ public class RestCards {
     @ResponseBody
     public ResponseEntity<String> getCheckAnswer(@RequestParam String frage, @RequestParam String antwort, @RequestParam String passwort) {
         if(passwort.equals(Utils.passwort)){
-            boolean isPresent = true;
-            int index = 0;
-            while(isPresent){
-                isPresent = false;
-                for (int i = 0; i < Application.karten.size(); i++) {
-                    if(index == Application.karten.get(i).getId()){
-                        isPresent = true;
-                    }
-                }
-                index++;
-            }
-
-            Data.addKarte(Application.karten, new Karte(index, frage, antwort));
+            Utils.id++;
+            Data.addKarte(Application.karten, new Karte(Utils.id, frage, antwort));
             JsonObject jo = new JsonObject();
             jo.addProperty("status", "okay");
             return new ResponseEntity<>(jo.toString(), HttpStatus.CREATED);
